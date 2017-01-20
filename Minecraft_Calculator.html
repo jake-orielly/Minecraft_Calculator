@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<style>
+</style>
+<body>
+<div id='item1'>20 Sticks</div>
+<script>
+    var stick = {planks:2,output:4};
+    var planks = {wood:1,output:4};
+    
+    var result = 4 * stick.planks / stick.output;
+    result = result * planks.wood / planks.output;
+    document.getElementById('item1').innerHTML = result;
+</script>
+</body>
+</html>
