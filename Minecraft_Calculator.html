@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html>
 <style>
+    .left {
+        float: left;
+    }
+    
+    .thing {
+        width: 40px;
+        margin-right: 10px;
+    }
 </style>
 <body>
-<div id='item1'>20 Sticks</div>
+<input type="number" class='left thing' id="myNumber" value="2">
+<div id='input'> Sticks</div>
+<button onclick='calculate'>Calculate</button>
+<br>
+<div id='output'>Something went wrong!</div>
 <script>
-    var stick = {planks:2,output:4};
-    var planks = {wood:1,output:4};
+    var wood = {name:'Wood'};
+    var planks = {name:"Planks",ingredients:wood,output:4};
+    var stick = {name:'Stick',ingredients:planks,output:2};
+    var x = stick;
+
+    var result = {amount:32,items:stick};
     
-    var result = 4 * stick.planks / stick.output;
-    result = result * planks.wood / planks.output;
-    document.getElementById('item1').innerHTML = result;
+    craftItem(result);
+    
+    document.getElementById('output').innerHTML = result.amount + " " + result.items.name;
+    
+    function craftItem (given) {
+        while (given.items.ingredients) {
+            given.amount = given.amount / given.items.output;
+            given.items = given.items.ingredients;
+        }
+    }
 </script>
 </body>
 </html>
